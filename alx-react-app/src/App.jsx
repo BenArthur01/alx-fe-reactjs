@@ -20,9 +20,9 @@ function App() {
       <Footer /> {/* Bottom Section */}
       
       <UserProfile 
-        name="Dices"
-        age="26"
-        bio="Loves designing & Reading"
+        name="Alice"
+        age="25"
+        bio="Loves hiking and photography"
       />
       <div>
         <a href="https://vite.dev" target="_blank">
