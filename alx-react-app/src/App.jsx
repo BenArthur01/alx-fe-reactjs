@@ -1,4 +1,4 @@
-import UserProfile from './components/UserProfile'
+import UserProfile from './components/UserProfile';
 import WelcomeMessage from './components/WelcomeMessage';
 import Header from './Header';
 import MainContent from './MainContent';
@@ -13,21 +13,17 @@ function App() {
 
   return (
     <>
-      <div>
-        <WelcomeMessage /> {/* This renders the custom component */}
-      </div>
-      <div>
-        <Header /> {/* Top Section */}
-        <MainContent /> {/* Middle Section */}
-        <Footer /> {/* Bottom Section */}
-      </div>
-      <div>
-        <UserProfile 
-          name="Dices"
-          age="26"
-          bio="Loves designing & Reading"
-        />
-      </div>
+      <WelcomeMessage /> {/* This renders the custom component */}
+      
+      <Header /> {/* Top Section */}
+      <MainContent /> {/* Middle Section */}
+      <Footer /> {/* Bottom Section */}
+      
+      <UserProfile 
+        name="Dices"
+        age="26"
+        bio="Loves designing & Reading"
+      />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
