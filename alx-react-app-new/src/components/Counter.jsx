@@ -18,7 +18,7 @@ function Counter() {
 
             {/* Button to decrease the count */}
             <button onClick={() => setCount(count - 1)} style={{margin: '5px' }}>
-                Derement
+                Decrement
             </button>
 
             {/* Buttom to reset the count to 0 */}
@@ -28,3 +28,5 @@ function Counter() {
         </div>
     );
 }
+
+export default Counter;
