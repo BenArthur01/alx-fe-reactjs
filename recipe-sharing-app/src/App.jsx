@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipeDetails from "./components/RecipeDetails";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
+import SearchBar from "./components/SearchBar";
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
+            <SearchBar />
             <AddRecipeForm />
             <RecipeList />
       
