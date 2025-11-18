@@ -46,6 +46,7 @@ function App() {
             </p>
           </>
         } />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>
     </BrowserRouter> 
   );
