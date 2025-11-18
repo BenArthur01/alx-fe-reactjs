@@ -3,6 +3,8 @@ import RecipeDetails from "./components/RecipeDetails";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
 import SearchBar from "./components/SearchBar";
+import FavoritesList from "./components/FavoritesList";
+import RecommendationsList from "./components/RecommendationsList";
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -19,6 +21,8 @@ function App() {
             <SearchBar />
             <AddRecipeForm />
             <RecipeList />
+            <FavoritesList />
+            <RecommendationsList />
       
             <div>
               <a href="https://vite.dev" target="_blank">

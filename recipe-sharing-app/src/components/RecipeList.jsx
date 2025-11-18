@@ -1,6 +1,7 @@
 // Display the list of recipes
 import { useRecipeStore } from "../recipeStore";
 import { Link } from "react-router-dom";
+import FavoriteToggle from "./FavoriteToggle";
 
 const RecipeList = () => {
     const recipes = useRecipeStore((state) => state.recipes);
@@ -17,6 +18,7 @@ const RecipeList = () => {
                         <Link to={`/recipe/${recipe.id}`}>
                             <h3>{recipe.title}</h3>
                             <p>{recipe.description}</p>
+                            <FavoriteToggle recipeId={recipe.id} />
                         </Link>    
                     </div>
                 ))        
