@@ -1,7 +1,11 @@
+// src/App.jsx
 // Main app: holds search state, calls the API service, and render UI.
 // Keeps logic simple and beginner-friendly.
 
 import { useState } from 'react';
+import Search from './components/Search';
+import UserResult from './components/UserResult';
+import { fetchUserData } from './services/githubService';
 import SearchBar from './components/SearchBar';
 import Results from './components/Results';
 import { searchUsers } from './services/githubApi';
@@ -14,15 +18,27 @@ function App() {
   const [users, setUsers] = useState([]);    // when searching for results
   const [loading, setLoading] = useState(false);   // loading indicator
   const [error, setError] = useState('');   // error feedback
+  const [user, setUser] = useState(null);   // The fetched user object
 
   const handleSearch = async (term) => {
     setError('');
+    setUser(null);
     setLoading(true);
     try {
       const items = await searchUsers(term);
       setUsers(items);
     } catch (err) {
       setError('Failed to fetch users. Try again later or check your network/token.');
+    } finally {
+      setLoading(false);
+    }
+
+    try {
+      const data = await fetchUserData(username);
+      setUser(data); // Success: store user data
+    } catch (e) {
+      // If Github returns 404 or network fails, show a friendly message
+      setError("Looks like we can't find the user");
     } finally {
       setLoading(false);
     }
@@ -34,6 +50,11 @@ function App() {
         <h1>Github User Search</h1>
         <SearchBar onSearch={handleSearch} />
         <Results users={users} loading={loading} error={error} />
+
+        {/* Conditional rendering for states */}
+        {loading && <p>Loading...</p>}
+        {!loading && error && <p style={{ color: 'crimson' }}>{error}</p>}
+        {!loading && !error && <UserResult user={user} />}
       </div>
       <div>
         <a href="https://vite.dev" target="_blank">
