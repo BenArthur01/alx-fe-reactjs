@@ -2,6 +2,7 @@
 // A controlled form that collects a Github username and calls onSearch on submit.
 
 import { useState } from "react";
+import { fetchUserData } from "../services/githubService";
 import axios from "axios";
 
 const Search = () => {
@@ -17,8 +18,8 @@ const Search = () => {
         setUser(null);
 
         try {
-            const res = await axios.get(`https://api.github.com/users/${username}`);
-            setUser(res.data); // Success: store user data
+            const data = await fetchUserData(username);
+            setUser(data); // Success: store user data
         } catch (err) {
             setError("Looks like we cant find the user"); // Error message for checker
         } finally {
