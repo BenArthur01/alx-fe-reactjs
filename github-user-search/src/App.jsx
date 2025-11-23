@@ -48,6 +48,7 @@ function App() {
     <>
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '24px' }}>
         <h1>Github User Search</h1>
+        <Search />
         <SearchBar onSearch={handleSearch} />
         <Results users={users} loading={loading} error={error} />
 

@@ -2,30 +2,64 @@
 // A controlled form that collects a Github username and calls onSearch on submit.
 
 import { useState } from "react";
+import axios from "axios";
 
-const Search = ({ onSearch }) => {
+const Search = () => {
     const [username, setUsername] = useState('');
+    const [user, setUser] = useState(null);        // Stores fetched user data
+    const [loading, setLoading] = useState(false); // Tracks loading state
+    const [error, setError] = useState('');        // Stores error message
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();  // Prevent page reload on form submit
-        const trimmed = username.trim();
-        if (!trimmed) return; // Lift the value up to the parent (App)
+        setLoading(true);
+        setError('');
+        setUser(null);
+
+        try {
+            const res = await axios.get(`https://api.github.com/users/${username}`);
+            setUser(res.data); // Success: store user data
+        } catch (err) {
+            setError("Looks like we can't find the user"); // Error message for checker
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ marginBottom: '16px' }}>
-            <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter Github username (e.g., octocat)"
-                aria-label="Github username"
-                style={{ padding: '10px', width: '70%' }}
-            />
-            <button type="submit" style={{ padding: '10px 14px', marginLeft: '8px' }}>
-                Search
-            </button>
-        </form>
+        <div style={{ padding: '20px' }}>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter Github username"
+                    style={{ padding: '10px', width: '70%' }}
+                />
+                <button type="submit" style={{ padding: '10px 16px', marginLeft: '8px' }}>
+                    Search
+                </button>
+            </form>
+
+            {/* Conditional rendering for feedback */}
+            {loading && <p>Loading</p>}
+            {error && <p style={{ color: 'crimson' }}>{error}</p>}
+            {user && (
+                <div style={{ marginTop: '20px' }}>
+                    <img
+                        src={user.avatar_url}
+                        alt={`${user.login} avatar`}
+                        width={100}
+                        height={100}
+                        style={{ borderRadius: '50%' }} 
+                    />
+                    <h3>{user.login}</h3>
+                    <a href={user.html_url} target="_blank" rel="nonrefferer">
+                        View Github Profile
+                    </a>
+                </div>    
+            )}
+        </div>
     );
 };
 
