@@ -20,7 +20,7 @@ const Search = () => {
             const res = await axios.get(`https://api.github.com/users/${username}`);
             setUser(res.data); // Success: store user data
         } catch (err) {
-            setError("Looks like we can't find the user"); // Error message for checker
+            setError("Looks like we cant find the user"); // Error message for checker
         } finally {
             setLoading(false);
         }
