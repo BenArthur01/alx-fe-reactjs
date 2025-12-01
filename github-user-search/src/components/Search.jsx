@@ -19,6 +19,7 @@ const Search = ({ onSearch }) => {
         setLoading(true);
         setError('');
         setUser(null);
+        setUsers([]);
         // Pass normalized values up to the parent/App
         onSearch({
            username: username.trim(),
@@ -29,6 +30,7 @@ const Search = ({ onSearch }) => {
         try {
             const data = await fetchUserData(username);
             setUser(data); // Success: store user data
+            setUsers(res.data.items);
         } catch (err) {
             setError("Looks like we cant find the user"); // Error message for checker
         } finally {
@@ -104,9 +106,11 @@ const Search = ({ onSearch }) => {
             </form>
 
             {/* Conditional rendering for feedback */}
-            {loading && <p>Loading</p>}
+            {loading && <p>Loading...</p>}
             {error && <p style={{ color: 'crimson' }}>{error}</p>}
-            {user && (
+
+            {/* .map()nused to rendr multiple results */}
+            {users.map((user) => (    
                 <div style={{ marginTop: '20px' }}>
                     <img
                         src={user.avatar_url}
@@ -120,7 +124,7 @@ const Search = ({ onSearch }) => {
                         View Github Profile
                     </a>
                 </div>    
-            )}
+            ))}
         </div>
     );
 };
