@@ -74,8 +74,11 @@ export async function getUserDetails(username) {
  *  Fetch a single user's profile by username.
  *  - Returns basic profile info (avatar_url, name, html_url, etc.)
  *  - Throws if the user is not found (to be handled in UI)
+ *  - This uses the endpoint: https://api.github.com/search/users?q=...
  */
-export async function fetchUserData(username) {
-    const res = await api.get(`/users/${username}`);
-    return res.data;
+export async function fetchUserData(query) {
+    const res = await api.get(`https://api.github.com/search/users`, {
+        params: { q: query },
+    });
+    return res.data.items;  // array of user results
 }
