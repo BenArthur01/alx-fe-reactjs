@@ -12,7 +12,10 @@ function UserProfile() {
             // - Width: max-w-xs (mobile), md:max-w-sm (larger screens) 
             // - Centering:mx-auto horizontally, my-20 vertically
             // - Shape & depth: rounded corners + shadow
-            className="bg-gray-100 p-4 sm:p-4 md:p-8 max-w-sm mx-auto my-20 rounded-lg shadow-lg"
+            className="bg-gray-100 p-4 sm:p-4 md:p-8 max-w-sm mx-auto my-20 rounded-lg shadow-lg
+                hover:shadow-xl  
+                transition-shadow
+                duration-300 ease-in-out"  // Increases shadow on hover and Makes the shadow change smooth.
         >
             <img
                 // Image styling:
@@ -21,7 +24,10 @@ function UserProfile() {
                 // - Centered horizontally
                 src="https://via.placeholder.com/150"
                 alt="User"
-                className="rounded-full w-24 h-24 sm:w-24 sm:h-24 md:w-36 md:h-36 mx-auto" 
+                className="rounded-full w-24 h-24 sm:w-24 sm:h-24 md:w-36 md:h-36 mx-auto
+                hover:scale-110
+                transition-transform 
+                duration-300 ease-in-out" // Controls speed and easing
             />
 
             <h1
@@ -30,7 +36,9 @@ function UserProfile() {
                 // - Color: deep blue
                 // - Spacing: vertical margins for seperation
                 // - Centered for neat layout
-                className="text-lg sm:text-lg md:text-xl text-blue-800 my-4 text-center"
+                className="text-lg sm:text-lg md:text-xl text-blue-800 my-4 text-center
+                transition-colors
+                duration-300 ease-in-out"
             >
                 Benjamin Dices
             </h1>
