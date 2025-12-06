@@ -12,7 +12,7 @@ function UserProfile() {
             // - Width: max-w-xs (mobile), md:max-w-sm (larger screens) 
             // - Centering:mx-auto horizontally, my-20 vertically
             // - Shape & depth: rounded corners + shadow
-            className="bg-gray-100 p-4 md:p-8 max-w-sm mx-auto my-20 rounded-lg shadow-lg"
+            className="bg-gray-100 p-4 sm:p-4 md:p-8 max-w-sm mx-auto my-20 rounded-lg shadow-lg"
         >
             <img
                 // Image styling:
@@ -21,7 +21,7 @@ function UserProfile() {
                 // - Centered horizontally
                 src="https://via.placeholder.com/150"
                 alt="User"
-                className="rounded-full w-24 h024 md:w-36 md:h-36 mx-auto" 
+                className="rounded-full w-24 h-24 sm:w-24 sm:h-24 md:w-36 md:h-36 mx-auto" 
             />
 
             <h1
@@ -30,7 +30,7 @@ function UserProfile() {
                 // - Color: deep blue
                 // - Spacing: vertical margins for seperation
                 // - Centered for neat layout
-                className="text-lg md:text-xl text-blue-800 my-4 text-center"
+                className="text-lg sm:text-lg md:text-xl text-blue-800 my-4 text-center"
             >
                 Benjamin Dices
             </h1>
@@ -40,7 +40,7 @@ function UserProfile() {
                 // - Font size: text-sm (mobile), md:text-base (larger screens)
                 // - Color: gray for readable contrast
                 // - Centered text to match card style
-                className="text-sm md:text-base text-gray-600 text-center"
+                className="text-sm sm:text-sm md:text-base text-gray-600 text-center"
             >
                 Developer at Microsoft. Loves to write code and explore new technologies.
             </p>
