@@ -48,7 +48,8 @@ function UserProfile() {
                 // - Font size: text-sm (mobile), md:text-base (larger screens)
                 // - Color: gray for readable contrast
                 // - Centered text to match card style
-                className="text-sm sm:text-sm md:text-base text-gray-600 text-center"
+                className="text-sm sm:text-sm md:text-base text-gray-600 text-center
+                hover:text-blue-500"
             >
                 Developer at Microsoft. Loves to write code and explore new technologies.
             </p>
