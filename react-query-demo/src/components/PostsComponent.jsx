@@ -24,6 +24,8 @@ export default function PostsComponent() {
         refetch,       // Function to manually re-fetch data
         isFetching,    // True when a background refetch is happening 
     }   = useQuery('posts', fetchPosts, {
+        refetchOnWindowsFocus: true,
+        keepPreviousData: true,
         // Optional: keep data fresh for a period; avoids instant refetches
         staleTime: 1000 * 30, // 30 seconds
         // Optional: cache time affects how long inactive queries stay in cache
