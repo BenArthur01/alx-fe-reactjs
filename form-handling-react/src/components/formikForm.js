@@ -6,22 +6,16 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-// Yup calidation schema (declarative rules)
+// Yup validation schema (declarative rules)
 const RegistrationSchema = Yup.object({
-    username: Yup.string()
-        .trim()
-        .required('Username is required'),
-    email: Yup.string()
-        .email('ter a valid email')
-        .required('Email is required'),
-    password: Yup.string()
-        .min(6, 'Password should be at least 6 characters')
-        .required('password is required'),        
+    username: Yup.string().required('Username is required'),
+    email: Yup.string().email('ter a valid email').required('Email is required'),
+    password: Yup.string().min(6, 'Password should be at least 6 characters').required('password is required'),        
 });
 
 // Simulated API (same idea as before)
 const fakeRegisterApi = (payload) =>
-    new Promise((resolve) => {
+    new Promise((resolved) => {
         setTimeout(() => resolved ({ ok: true, message: `Registered ${payload.username}`}), 800);
     });
 
