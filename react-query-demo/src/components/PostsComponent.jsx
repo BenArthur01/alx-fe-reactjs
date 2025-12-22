@@ -5,13 +5,11 @@
 
 import { useQuery } from 'react-query';
 
-const POST_URL = 'https://jsonplaceholder.typicde.com/posts';
-
 // Simple fetcher function returning JSON
 async function fetchPosts() {
-    const res = await fetch(POST_URL);
-    if (!res.ok) throw new Error('Failed to fetch posts');
-    return res.json();
+    const response = await fetch('https://jsonplaceholder.typicde.com/posts');
+    if (!response.ok) throw new Error('Failed to fetch posts');
+    return response.json();
 }
 
 export default function PostsComponent() {
@@ -20,7 +18,7 @@ export default function PostsComponent() {
     // - fetchPosts is the async function
     const {
         data,          // The resolved data (array of posts)
-        isloading,     // True while request is in-flight
+        isLoading,     // True while request is in-flight
         isError,       // True if request failed
         error,         // Error object when isError is true
         refetch,       // Function to manually re-fetch data
@@ -32,7 +30,7 @@ export default function PostsComponent() {
         cacheTime: 1000 * 60 * 5,   // 5 minutes
     });
 
-    if (isloading) return <p>Loading posts...</p>;
+    if (isLoading) return <p>Loading posts...</p>;
     if (isError) return <p style={{ color: 'crimson' }}>Error: {error.message}</p>;
 
     return (
