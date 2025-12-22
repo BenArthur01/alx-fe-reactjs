@@ -1,18 +1,23 @@
+import { QueryClient, QueryClientProvider } from 'react-query'; 
 import PostsComponent from './components/PostsComponent';
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+// Creating the client instance
+const queryClient = new QueryClient
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className='min-h-screen bg-white'>
+      // Wrapping the app with QueryClientProvider
+      <QueryClientProvider client={queryClient}>
         <PostsComponent />
-      </div>
-      
+      </QueryClientProvider>
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
